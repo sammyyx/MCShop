@@ -11,7 +11,12 @@
                 </mc-item-with-border>
             </div>
             <div class="fire_wrapper">
-                <image class="fire" src="{{fire}}"></image>
+                <mc-item-with-border
+                        _id="fire"
+                        name="fire"
+                        icon="{{fire}}"
+                        material="yes"
+                        ></mc-item-with-border>
             </div>
             <div class="fuel">
                 <mc-item-with-border
@@ -39,7 +44,7 @@
     module.exports = {
         data: {
             arrow: "file:///android_asset/items/arrow_outline_red_right_T.png",
-            fire: "file:///android_asset/items/62-0.png",
+            fire: "https://cdn2.iconfinder.com/data/icons/fire-department/500/fire-512.png",
             fuel: "file:///android_asset/items/263-0.png",
             target_id: null,
             target_name: null,
@@ -64,8 +69,6 @@
     .fire {
         width: 150px;
         height: 150px;
-        align-items: center;
-        justify-content: center;
     }
 
     .arrow {

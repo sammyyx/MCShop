@@ -150,7 +150,7 @@
                     self.isDisplayFurnace = true;
                     self.target_id = self._id;
                     self.target_name = self.name;
-                    self.target_icon = "file:///android_asset/items/"+self.icon;
+                    self.target_icon = self.icon;
                     self.target_material = self.material;
                     self.material_id = formula.items[0].id;
                     self.material_name = formula.items[0].name;
