@@ -79,8 +79,8 @@ public class SqliteModule extends WXModule{
     @WXModuleAnno
     public void getBalance(JSCallback callback) {
         MCBalanceHelper mBalanceHelper = new MCBalanceHelper();
-        MCBalance mBalance = mBalanceHelper.calculateFromShoppingList();
-        callback.invoke(mBalance);
+        MCBalance mcBalance = mcBalance = mBalanceHelper.calculateFromShoppingList();
+        callback.invoke(mcBalance);
     }
 
     @WXModuleAnno

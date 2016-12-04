@@ -15,6 +15,12 @@
 </template>
 
 <style>
+    .bundle {
+        margin-bottom: 20px;
+        border-bottom-width: 2px;
+        border-bottom-style: dashed;
+        border-bottom-color: #eeeeee;
+    }
     .pic {
         width: 150px;
         height: 150px;
@@ -37,19 +43,16 @@
     }
 
     .tools {
-        border-left-style: solid;
-        border-left-width: 2px;
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
-        padding-left: 20px;
+        justify-content: space-between;
         flex: 1;
     }
 
     .bundle {
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .des {
@@ -85,9 +88,7 @@
         },
         methods: {
             clickDesBut: function (e) {
-                if (this.itemNumInSp == 0) return;
-                this.itemNumInSp--;
-                if(this.itemNumInSp == 0) {
+                if(this.itemNumInSp == 1) {
                     var self = this;
                     modal.confirm({
                         message: "delete " + this.name + " from this shopping list?",
@@ -95,11 +96,14 @@
                         cancelTitle: "no"
                     }, function(res) {
                         if(res == "yes") {
+                            self.itemNumInSp--;
                             sqliteModule.deleteItemFromSp(self._id);
+                            self.$dispatch("itemnumchange", {});
                             self.shown = false;
                         }
                     });
-
+                } else {
+                    this.itemNumInSp--;
                 }
                 sqliteModule.updateItemNumber(this._id, this.itemNumInSp, function (e) {
                 });

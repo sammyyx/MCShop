@@ -13,7 +13,7 @@
 
 <style>
     .wrapper {
-
+        background-color: #eeeeee;
     }
 
     .shopCar {
@@ -75,6 +75,15 @@
                     self.row.push(item);
                 }
             });
+            this.$on('itemnumchange', function(e) {
+                sqliteModule.getAllItemFromShoppingList(function (list) {
+                    if(list == "null") {
+                        self.itemNumInSp = 0;
+                        return;
+                    }
+                    self.itemNumInSp = list.length;
+                })
+            })
         },
         methods: {
             clickFunctionBar: function (e) {

@@ -5,12 +5,22 @@
             <text class="searchBar" onclick="searchBarClick">{{searchBarInputTxt}}</text>
         </div>
         <scroller class="lower" id="lower">
-            <mc-item-one-line repeat="{{row}}" row="{{data}}"></mc-item-one-line>
+            <div class="items">
+                <mc-item-one-line repeat="{{row}}" row="{{data}}"></mc-item-one-line>
+            </div>
         </scroller>
     </container>
 </template>
 
 <style>
+
+    .wrapper {
+        background-color: #eeeeee;
+    }
+    .items {
+        justify-content: center;
+    }
+
     .searchBar {
         border-left-width: 2px;
         border-right-width: 2px;

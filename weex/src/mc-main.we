@@ -15,7 +15,9 @@
             <text class='but' onclick="searchButClick">search</text>
         </div>
         <scroller class="lower" id="lower">
-            <mc-item-one-line repeat="{{row}}" row="{{data}}"></mc-item-one-line>
+            <div class="items">
+                <mc-item-one-line repeat="{{row}}" row="{{data}}"></mc-item-one-line>
+            </div>
         </scroller>
     </div>
 </template>
@@ -28,6 +30,10 @@
         border-right-style: solid;
         border-color: #000000;
         flex: 3;
+    }
+
+    .items {
+        justify-content: center;
     }
 
     .upper {
@@ -47,7 +53,7 @@
     }
 
     .wrapper {
-
+        background-color: #eeeeee;
     }
 </style>
 

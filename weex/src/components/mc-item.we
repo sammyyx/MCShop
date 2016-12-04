@@ -26,7 +26,6 @@
         },
         methods: {
             clickItem: function (e) {
-                modal.toast({"message": this.icon, "duration": 1});
                 if(this.material == "no") {
                     var params = {
                         "url": "file://assets/weex/pages/" + "mc-composed-table-page.js" + "?id=" + this._id,
