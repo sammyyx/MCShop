@@ -1,31 +1,68 @@
 <template>
     <div class="item" onclick="clickItem">
         <image src="{{icon}}" class="icon"></image>
+        <div class="text-wrapper" if="{{shown}}">
+            <text class="text">M</text>
+        </div>
     </div>
 </template>
 
 <style>
     .icon {
+        width: 140px;
+        height: 140px;
+    }
+
+    .item {
+        justify-content: center;
+        align-items: center;
         width: 150px;
         height: 150px;
     }
+
+    .text {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+        color: red;
+    }
+
+    .text-wrapper {
+        width: 38px;
+        height: 38px;
+        position: absolute;
+        top: 20px;
+        left: 80px;
+        align-items: center;
+        justify-content: center;
+        -webkit-border-radius:19px;
+        -moz-border-radius:19px;
+        border-radius:19px;
+        background-color: #d9d9d9;
+    }
+    
 </style>
 
 <script>
     var navigator = require('@weex-module/navigator');
-    var sqliteModule = require('@weex-module/sqlitemodule');
     var modal = require('@weex-module/modal');
     module.exports = {
         data: {
             _id: null,
             name: null,
             icon: null,
-            material: null
+            material: null,
+            shown: true
         },
         created: function () {
+            if(this.material == "no") {
+                this.shown = false;
+            }
         },
         methods: {
+
             clickItem: function (e) {
+                modal.toast({"message": this._id, "duration": 1});
                 if(this.material == "no") {
                     var params = {
                         "url": "file://assets/weex/pages/" + "mc-composed-table-page.js" + "?id=" + this._id,

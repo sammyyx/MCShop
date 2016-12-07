@@ -23,6 +23,8 @@
     .functionBar {
         font-size: 35px;
         text-align: center;
+        background-color: #b8b8b8;
+        color: #FFFFFF;
         flex: 1;
     }
 

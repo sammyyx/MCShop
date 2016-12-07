@@ -1,14 +1,18 @@
 <template>
     <container class="wrapper">
-        <div class="upper">
-            <text class="title" onclick="resultClick">{{result}}</text>
-        </div>
+        <!--<div class="upper">-->
+            <!--<text class="title" onclick="resultClick">{{result}}</text>-->
+        <!--</div>-->
         <div class="content">
-            <text class="text">{{needInfo}}</text>
+            <div class="text-wrapper">
+                <text class="text">{{needInfo}}</text>
+            </div>
             <scroller class="needlist">
                 <mc-cal-one-line repeat="{{rowNeed}}" row="{{data}}"></mc-cal-one-line>
             </scroller>
-            <text class="text">{{wasteInfo}}</text>
+            <div class="text-wrapper">
+                <text class="text">{{wasteInfo}}</text>
+            </div>
             <scroller class="wastelist">
                 <mc-cal-one-line repeat="{{rowWaste}}" row="{{data}}"></mc-cal-one-line>
             </scroller>
@@ -20,33 +24,35 @@
     .wrapper {
         background-color: #eeeeee;
     }
-
-    .title {
-        font-size: 40px;
-        text-align: center;
+    .text-wrapper {
+        justify-content: center;
         align-items: center;
         flex: 1;
     }
 
     .text {
-        border-top-width: 2px;
-        border-top-style: dashed;
-        border-top-color: #eeeeee;
+        /*border-top-width: 2px;*/
+        /*border-top-style: dashed;*/
+        /*border-top-color: darkgrey;*/
         font-size: 35px;
         text-align: center;
-        flex: 1;
     }
 
     .needlist {
-        flex: 5;
+        flex: 6;
+        background-color: #f8f6f4;
+        margin-left: 18px;
+        margin-right: 18px;
     }
 
     .wastelist {
-        flex: 5;
+        flex: 4;
+        background-color: #f8f6f4;
+        margin-left: 18px;
+        margin-right: 18px;
+        margin-bottom: 18px;
     }
-    .upper {
-        flex: 1;
-    }
+
     .content {
         flex: 12;
     }
@@ -57,8 +63,8 @@
     var modal = require("@weex-module/modal");
     module.exports = {
         data: {
-            needInfo: "need",
-            wasteInfo: "waste",
+            needInfo: "Needed Materials",
+            wasteInfo: "Wasted Items",
             result: "result",
             rowNeed: [],
             rowWaste: []

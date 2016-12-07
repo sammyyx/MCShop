@@ -44,7 +44,7 @@
     module.exports = {
         data: {
             arrow: "file:///android_asset/items/arrow_outline_red_right_T.png",
-            fire: "https://cdn2.iconfinder.com/data/icons/fire-department/500/fire-512.png",
+            fire: "file:///android_asset/items/Fire.png",
             fuel: "file:///android_asset/items/263-0.png",
             target_id: null,
             target_name: null,

@@ -1,7 +1,9 @@
 <template>
     <div class="wrapper">
         <div class="upper">
-            <text class='but' onclick="shoppingListClick">shop</text>
+            <div class="icon-wrapper">
+                <image class="title-icon" src="file:///android_asset/items/cart.png" onclick="shoppingListClick"></image>
+            </div>
             <input
                     class="searchBar"
                     id="searchBar"
@@ -12,17 +14,27 @@
                     oninput="searchBarInput"
             >
             </input>
-            <text class='but' onclick="searchButClick">search</text>
+            <div class="icon-wrapper">
+                <image class="title-icon" src="file:///android_asset/items/search.png" onclick="searchButClick"></image>
+            </div>
         </div>
         <scroller class="lower" id="lower">
             <div class="items">
-                <mc-item-one-line repeat="{{row}}" row="{{data}}"></mc-item-one-line>
+                <mc-item-one-line repeat="{{loadedContent}}" row="{{data}}"></mc-item-one-line>
             </div>
+            <loading class="loading-view" display="{{loading_display}}" onloading="onloading">
+                <loading-indicator class="indicator" ></loading-indicator>
+            </loading>
         </scroller>
     </div>
 </template>
 
 <style>
+    .title-icon {
+        width: 50px;
+        height: 50px;
+    }
+
     .searchBar {
         border-left-width: 2px;
         border-right-width: 2px;
@@ -36,10 +48,18 @@
         justify-content: center;
     }
 
+    .icon-wrapper{
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+    }
+
     .upper {
         flex-direction: row;
         flex: 1;
         align-items: center;
+        border-bottom-width: 2px;
+        border-bottom-color: darkgrey;
     }
 
     .but {
@@ -54,10 +74,29 @@
 
     .wrapper {
         background-color: #eeeeee;
+        /*background-color: lightgreen;*/
+    }
+
+    .loading-view {
+        width: 750px;
+        height: 100px;
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+    }
+    .indicator {
+        height: 60px;
+        width: 60px;
+        color: #889967;
     }
 </style>
 
 <script>
+    require('weex-components');
     require('./components/mc-item-one-line.we');
     var sqliteModule = require('@weex-module/sqlitemodule');
     var navigator = require('@weex-module/navigator');
@@ -65,7 +104,10 @@
     module.exports = {
         data: {
             row: [],
-            searchbarInputTxt: ''
+            loadedContent: [],
+            loadedPosition: 0,
+            searchbarInputTxt: '',
+            loading_display: 'hide'
         },
         created: function () {
             var self = this;
@@ -88,11 +130,16 @@
                                 }
                                 if (j == 3) {
                                     self.row.push(column);
+                                    if(i < 40) {
+                                        self.loadedContent.push(column);
+                                    }
                                 }
                             }
                         }
                     }
-            )
+            );
+        },
+        ready: function() {
         },
         methods: {
             shoppingListClick: function (e) {
@@ -112,12 +159,33 @@
                     modal.toast({'message': 'please input item name or id', 'duration': 1});
                     return;
                 }
+                this.searchbarInputTxt = "";
                 var params = {
                     'url': "file://assets/weex/pages/mc-search-page.js?nitem=" + this.added_item + "&searchtxt=" + txt,
                     'animated': 'true'
                 };
                 navigator.push(params, function (e) {
                 });
+            },
+            onloading: function(e) {
+                var self = this;
+                self.loading_display = 'show';
+                self.$call('modal', 'toast', {
+                    'message': 'onloading'
+                });
+                this.$call('timer', 'setTimeout', function() {
+                    //modal.toast({"message": "loadedPosition: "+ self.loadedContent.length + " row.length" + self.row.length, "duration" : 1});
+                    var curPosition = self.loadedContent.length;
+                    if (curPosition < self.row.length) {
+                        for(var i = 0; i < 10; i++) {
+                            self.loadedContent.push(self.row[curPosition]);
+                            if(++curPosition >= self.row.length) {
+                                break;
+                            }
+                        }
+                    }
+                    self.loading_display = 'hide';
+                }, 500);
             }
         }
     }

@@ -3,11 +3,8 @@ package com.weex.sammy.mcshop;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -17,16 +14,11 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        View textView = findViewById(R.id.fullscreen_content);
-        ScaleAnimation scaleAnimation = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        RotateAnimation rotateAnimation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        AlphaAnimation aa = new AlphaAnimation(0.1f,1.0f);
+        this.findViewById(R.id.welcome).startAnimation(aa);
+        aa.setDuration(1500);
 
-        AnimationSet animationSet = new AnimationSet(false);
-        animationSet.addAnimation(scaleAnimation);
-        animationSet.addAnimation(rotateAnimation);
-        animationSet.setDuration(1500);
-
-        animationSet.setAnimationListener(new Animation.AnimationListener() {
+        aa.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
             }
@@ -41,7 +33,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onAnimationRepeat(Animation animation) {
             }
         });
-        textView.startAnimation(animationSet);
     }
 
 }

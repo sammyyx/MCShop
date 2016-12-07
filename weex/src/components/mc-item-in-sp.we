@@ -7,9 +7,13 @@
             <text class="name">{{name}}</text>
         </div>
         <div class="tools">
-            <text class="des" onclick="clickDesBut">-</text>
+            <div class="tool-wrapper" onclick="clickDesBut">
+                <text class="des">-</text>
+            </div>
             <text class="number">{{itemNumInSp}}</text>
-            <text class="inc" onclick="clickIncBut">+</text>
+            <div class="tool-wrapper" onclick="clickIncBut">
+                <text class="inc">+</text>
+            </div>
         </div>
     </div>
 </template>
@@ -17,14 +21,25 @@
 <style>
     .bundle {
         margin-bottom: 20px;
-        border-bottom-width: 2px;
-        border-bottom-style: dashed;
-        border-bottom-color: #eeeeee;
+        background-color: #f8f6f4;
     }
     .pic {
         width: 150px;
         height: 150px;
         flex: 1;
+    }
+
+    .tool-wrapper {
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        -webkit-border-radius:24px;
+        -moz-border-radius:24px;
+        border-radius:24px;
+        background-color: #eeeeee;
+        margin-right: 20px;
+        margin-left: 20px;
     }
 
     .name {
@@ -39,13 +54,12 @@
 
     .number {
         font-size: 40px;
-        flex: 1;
     }
 
     .tools {
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         flex: 1;
     }
 
@@ -57,12 +71,10 @@
 
     .des {
         font-size: 40px;
-        flex: 1;
     }
 
     .inc {
         font-size: 40px;
-        flex: 1;
     }
 </style>
 
