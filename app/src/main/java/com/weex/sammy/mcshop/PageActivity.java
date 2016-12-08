@@ -9,7 +9,9 @@ import android.widget.Toast;
 
 import com.taobao.weex.WXSDKInstance;
 
-
+/**
+ * 为了页面跳转而设计的Activity
+ */
 public class PageActivity extends AbsWeexActivity {
 
     public static Activity wxPageActivityInstance;

@@ -1,8 +1,5 @@
 <template>
     <container class="wrapper">
-        <!--<div class="upper">-->
-            <!--<text class="title" onclick="resultClick">{{result}}</text>-->
-        <!--</div>-->
         <div class="content">
             <div class="text-wrapper">
                 <text class="text">{{needInfo}}</text>
@@ -31,9 +28,6 @@
     }
 
     .text {
-        /*border-top-width: 2px;*/
-        /*border-top-style: dashed;*/
-        /*border-top-color: darkgrey;*/
         font-size: 35px;
         text-align: center;
     }

@@ -19,6 +19,9 @@ import java.util.List;
  * Created by sammy on 2016/11/26.
  */
 
+/**
+ * 数据库操作类
+ */
 public class MySqliteHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;

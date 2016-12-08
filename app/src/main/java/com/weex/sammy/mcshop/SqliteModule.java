@@ -17,6 +17,11 @@ import java.util.List;
  * Created by sammy on 2016/11/26.
  */
 
+/**
+ * Native提供的接口，供JS调用的一些模块
+ * 主要为数据库的操作接口
+ */
+
 public class SqliteModule extends WXModule{
 
     @WXModuleAnno

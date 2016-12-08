@@ -1,30 +1,15 @@
 <template>
     <div class="bundle">
         <mc-item _id="{{_id}}" name="{{name}}" icon="{{icon}}" category="{{category}}"></mc-item>
-        <!--<text class="name">{{name}}</text>-->
         <text class="number">×{{num}}</text>
     </div>
 </template>
 
 <style>
-    .pic {
-        width: 150px;
-        height: 150px;
-    }
-
-    .name {
-        font-size: 20px;
-        text-align: center;
-        flex: 1;
-    }
 
     .bundle {
-        /*margin-top: 17px;*/
-        /*margin-right: 17px;*/
-        /*margin-bottom: 17px;*/
-        /*margin-left: 17px;*/
-        width: 185px;
-        height: 185px;
+        width: 180px;
+        height: 180px;
     }
 
     .number {
@@ -34,13 +19,11 @@
         left: 120px;
         font-weight: bold;
         color: #e09223;
-        /*color: orangered;*/
     }
 </style>
 
 <script>
-    var sqliteModules = require('@weex-module/sqlitemodule');
-    var modal = require('@weex-module/modal');
+
     module.exports = {
         data: {
             name: null,
