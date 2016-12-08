@@ -43,7 +43,7 @@
                     okTitle: "yes",
                     cancelTitle: "no"
                 }, function (res) {
-                    modal.toast({'message': res, 'duration': 1});
+//                    modal.toast({'message': res, 'duration': 1});
                     if (res == "yes") {
                         var item = new Object();
                         item.name = self.name;

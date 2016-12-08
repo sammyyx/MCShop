@@ -7,7 +7,7 @@
         <scroller class="shopCar" id="shopCar">
             <mc-sp-one-line row="{{row}}"></mc-sp-one-line>
         </scroller>
-        <text class="functionBar" onclick="clickFunctionBar">click to calculate</text>
+        <text class="functionBar" onclick="clickFunctionBar">Calculate</text>
     </div>
 </template>
 
@@ -64,7 +64,17 @@
             var self = this;
             sqliteModule.getAllItemFromShoppingList(function (list) {
                 if (list == "null") {
-                    modal.toast({"message": "list is  empty", "duration": 1});
+//                    modal.toast({"message": "list is  empty", "duration": 1});
+                    modal.alert({
+                        message: "You haven't add anything to shopping list!",
+                        okTitle: "ok"
+                    }, function() {
+                        var params = {
+                            "animated": true
+                        };
+                        navigator.pop(params, function (e) {
+                        });
+                    });
                     return;
                 }
                 self.itemNumInSp = list.length;

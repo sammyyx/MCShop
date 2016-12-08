@@ -62,7 +62,7 @@
         methods: {
 
             clickItem: function (e) {
-                modal.toast({"message": this._id, "duration": 1});
+//                modal.toast({"message": this._id, "duration": 1});
                 if(this.category != "material") {
                     var params = {
                         "url": "file://assets/weex/pages/" + "mc-composed-table-page.js" + "?id=" + this._id,
