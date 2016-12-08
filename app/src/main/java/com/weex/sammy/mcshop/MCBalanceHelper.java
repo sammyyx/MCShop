@@ -74,7 +74,7 @@ public class MCBalanceHelper {
             item.name = itemInSql.name;
             item.icon = itemInSql.icon;
             item.id = itemInSql.id;
-            item.material = itemInSql.material;
+            item.category = itemInSql.category;
             item.number = entry.getValue();
             mcBalance.needItems.add(item);
         }
@@ -86,7 +86,7 @@ public class MCBalanceHelper {
             item.name = itemInSql.name;
             item.icon = itemInSql.icon;
             item.id = itemInSql.id;
-            item.material = itemInSql.material;
+            item.category = itemInSql.category;
             item.number = entry.getValue();
             mcBalance.wasteItems.add(item);
         }

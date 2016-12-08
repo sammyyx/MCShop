@@ -6,7 +6,7 @@
                         _id="{{material_id}}"
                         name="{{material_name}}"
                         icon="{{material_icon}}"
-                        material="{{material_material}}"
+                        category="{{material_material}}"
                 >
                 </mc-item-with-border>
             </div>
@@ -15,7 +15,7 @@
                         _id="fire"
                         name="fire"
                         icon="{{fire}}"
-                        material="yes"
+                        category="yes"
                         ></mc-item-with-border>
             </div>
             <div class="fuel">
@@ -33,7 +33,7 @@
                     _id="{{target_id}}"
                     name="{{target_name}}"
                     icon="{{target_icon}}"
-                    material="{{target_material}}"
+                    category="{{target_material}}"
             >
             </mc-item-with-border>
         </div>

@@ -82,7 +82,7 @@
                         item.id = balance.needItems[i].id;
                         item.name = balance.needItems[i].name;
                         item.icon = "file:///android_asset/items/" + balance.needItems[i].icon;
-                        item.material = balance.needItems[i].material;
+                        item.category = balance.needItems[i].category;
                         item.number = balance.needItems[i].number;
                         column.data.push(item);
                         i++;
@@ -103,7 +103,7 @@
                         item.id = balance.wasteItems[i].id;
                         item.name = balance.wasteItems[i].name;
                         item.icon = "file:///android_asset/items/" + balance.wasteItems[i].icon;
-                        item.material = balance.wasteItems[i].material;
+                        item.category = balance.wasteItems[i].category;
                         item.number = balance.wasteItems[i].number;
                         column.data.push(item);
                         i++;

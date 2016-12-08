@@ -1,7 +1,7 @@
 <template>
     <div class="bundle" if="{{shown}}">
         <div class="item" id="{{_id}}">
-            <mc-item _id="{{_id}}" name="{{name}}" icon="{{icon}}" material="{{material}}" class="pic"></mc-item>
+            <mc-item _id="{{_id}}" name="{{name}}" icon="{{icon}}" category="{{category}}" class="pic"></mc-item>
         </div>
         <div class="name">
             <text class="name">{{name}}</text>
@@ -88,7 +88,7 @@
             name: null,
             _id: null,
             icon: null,
-            material: null,
+            category: null,
             itemNumInSp: null,
             shown: true
         },

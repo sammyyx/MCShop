@@ -1,192 +1,63 @@
 <template>
-    <div class="wrapper">
-        <div class="upper">
-            <div class="icon-wrapper">
-                <image class="title-icon" src="file:///android_asset/items/cart.png" onclick="shoppingListClick"></image>
-            </div>
-            <input
-                    class="searchBar"
-                    id="searchBar"
-                    type="text"
-                    autofocus="true"
-                    placeholder="input item name or id"
-                    value={{searchbarInputTxt}}
-                    oninput="searchBarInput"
-            >
-            </input>
-            <div class="icon-wrapper">
-                <image class="title-icon" src="file:///android_asset/items/search.png" onclick="searchButClick"></image>
-            </div>
-        </div>
-        <scroller class="lower" id="lower">
-            <div class="items">
-                <mc-item-one-line repeat="{{loadedContent}}" row="{{data}}"></mc-item-one-line>
-            </div>
-            <loading class="loading-view" display="{{loading_display}}" onloading="onloading">
-                <loading-indicator class="indicator" ></loading-indicator>
-            </loading>
-        </scroller>
+    <div style="flex-direction: column;" class="tabbar">
+        <wxc-tabbar tab-items = {{tabItems}}></wxc-tabbar>
     </div>
 </template>
 
 <style>
-    .title-icon {
-        width: 50px;
-        height: 50px;
+
+    .tabbar {
+
     }
 
-    .searchBar {
-        border-left-width: 2px;
-        border-right-width: 2px;
-        border-left-style: solid;
-        border-right-style: solid;
-        border-color: #000000;
-        flex: 3;
-    }
-
-    .items {
-        justify-content: center;
-    }
-
-    .icon-wrapper{
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .upper {
-        flex-direction: row;
-        flex: 1;
-        align-items: center;
-        border-bottom-width: 2px;
-        border-bottom-color: darkgrey;
-    }
-
-    .but {
-        flex: 1;
-        text-align: center;
-        font-size: 35px;
-    }
-
-    .lower {
-        flex: 12;
-    }
-
-    .wrapper {
-        background-color: #eeeeee;
-        /*background-color: lightgreen;*/
-    }
-
-    .loading-view {
-        width: 750px;
-        height: 100px;
-        display: -ms-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        align-items: center;
-    }
-    .indicator {
-        height: 60px;
-        width: 60px;
-        color: #889967;
-    }
 </style>
 
 <script>
     require('weex-components');
-    require('./components/mc-item-one-line.we');
-    var sqliteModule = require('@weex-module/sqlitemodule');
-    var navigator = require('@weex-module/navigator');
-    var modal = require('@weex-module/modal');
     module.exports = {
         data: {
-            row: [],
-            loadedContent: [],
-            loadedPosition: 0,
-            searchbarInputTxt: '',
-            loading_display: 'hide'
-        },
-        created: function () {
-            var self = this;
-            sqliteModule.getAllEntriesFromTableItems(
-                    function (list) {
-                        for (var i = 0; i < list.length;) {
-                            var column = {};
-                            column.data = [];
-                            for (var j = 0; j < 4; j++) {
-                                var item = {};
-                                item.id = list[i].id;
-                                item.name = list[i].name;
-                                item.icon = "file:///android_asset/items/"+list[i].icon;
-                                item.material = list[i].material;
-                                column.data.push(item);
-                                i++;
-                                if (i >= list.length) {
-                                    self.row.push(column);
-                                    break;
-                                }
-                                if (j == 3) {
-                                    self.row.push(column);
-                                    if(i < 40) {
-                                        self.loadedContent.push(column);
-                                    }
-                                }
-                            }
-                        }
-                    }
-            );
-        },
-        ready: function() {
-        },
-        methods: {
-            shoppingListClick: function (e) {
-                var params = {
-                    'url': "file://assets/weex/pages/mc-splist.js",
-                    'animated': 'true'
-                };
-                navigator.push(params, function (e) {
-                });
-            },
-            searchBarInput: function (e) {
-                this.searchbarInputTxt = e.value;
-            },
-            searchButClick: function (e) {
-                var txt = this.searchbarInputTxt;
-                if (txt === '') {
-                    modal.toast({'message': 'please input item name or id', 'duration': 1});
-                    return;
+            tabItems: [
+                {
+                    index: 0,
+                    title: 'Basic',
+                    titleColor: '#000000',
+                    icon: '',
+                    image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+                    selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+                    src: 'file://assets/weex/pages/mc-basic.js',
+                    visibility: 'visible'
+                },
+                {
+                    index: 1,
+                    title: 'Blocks',
+                    titleColor: '#000000',
+                    icon: '',
+                    image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+                    selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+                    src: "file://assets/weex/pages/mc-block.js",
+                    visibility: 'hidden'
+                },
+                {
+                    index: 2,
+                    title: 'Other',
+                    titleColor: '#000000',
+                    icon: '',
+                    image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+                    selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+                    src: "",
+                    visibility: 'hidden'
+                },
+                {
+                    index: 3,
+                    title: 'Material',
+                    titleColor: '#000000',
+                    icon: '',
+                    image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
+                    selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
+                    src: "file://assets/weex/pages/mc-material.js",
+                    visibility: 'hidden'
                 }
-                this.searchbarInputTxt = "";
-                var params = {
-                    'url': "file://assets/weex/pages/mc-search-page.js?nitem=" + this.added_item + "&searchtxt=" + txt,
-                    'animated': 'true'
-                };
-                navigator.push(params, function (e) {
-                });
-            },
-            onloading: function(e) {
-                var self = this;
-                self.loading_display = 'show';
-                self.$call('modal', 'toast', {
-                    'message': 'onloading'
-                });
-                this.$call('timer', 'setTimeout', function() {
-                    //modal.toast({"message": "loadedPosition: "+ self.loadedContent.length + " row.length" + self.row.length, "duration" : 1});
-                    var curPosition = self.loadedContent.length;
-                    if (curPosition < self.row.length) {
-                        for(var i = 0; i < 10; i++) {
-                            self.loadedContent.push(self.row[curPosition]);
-                            if(++curPosition >= self.row.length) {
-                                break;
-                            }
-                        }
-                    }
-                    self.loading_display = 'hide';
-                }, 500);
-            }
+            ]
         }
     }
 </script>

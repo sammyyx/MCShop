@@ -1,6 +1,6 @@
 <template>
     <div class="bundle">
-        <div class="item" onclick="clickItem">
+        <div class="item">
             <image src="{{icon}}" class="icon"></image>
             <div class="text-wrapper">
                 <text class="text">{{number}}</text>
@@ -74,22 +74,12 @@
             _id: null,
             name: null,
             icon: null,
-            material: null,
+            category: null,
             number: null
         },
         created: function () {
         },
         methods: {
-            clickItem: function (e) {
-                if(this.material == "no") {
-                    var params = {
-                        "url": "file://assets/weex/pages/" + "mc-composed-table-page.js" + "?id=" + this._id,
-                        "animated": "true"
-                    };
-                    navigator.push(params, function (e) {
-                    });
-                }
-            },
         }
     }
 </script>

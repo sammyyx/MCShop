@@ -51,11 +51,11 @@
             _id: null,
             name: null,
             icon: null,
-            material: null,
+            category: null,
             shown: true
         },
         created: function () {
-            if(this.material == "no") {
+            if(this.category != "material") {
                 this.shown = false;
             }
         },
@@ -63,7 +63,7 @@
 
             clickItem: function (e) {
                 modal.toast({"message": this._id, "duration": 1});
-                if(this.material == "no") {
+                if(this.category != "material") {
                     var params = {
                         "url": "file://assets/weex/pages/" + "mc-composed-table-page.js" + "?id=" + this._id,
                         "animated": "true"

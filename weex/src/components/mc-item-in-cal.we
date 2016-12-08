@@ -1,6 +1,6 @@
 <template>
     <div class="bundle">
-        <mc-item _id="{{_id}}" name="{{name}}" icon="{{icon}}" material="{{material}}"></mc-item>
+        <mc-item _id="{{_id}}" name="{{name}}" icon="{{icon}}" category="{{category}}"></mc-item>
         <!--<text class="name">{{name}}</text>-->
         <text class="number">×{{num}}</text>
     </div>
@@ -46,7 +46,7 @@
             name: null,
             _id: null,
             icon: null,
-            material: null,
+            category: null,
             num:null
         },
         created: function () {

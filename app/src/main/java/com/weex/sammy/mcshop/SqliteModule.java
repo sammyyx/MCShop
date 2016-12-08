@@ -20,9 +20,10 @@ import java.util.List;
 public class SqliteModule extends WXModule{
 
     @WXModuleAnno
-    public void getAllEntriesFromTableItems(JSCallback callback) {
-        List<MCItem> list = MainActivity.sqliteHelper.getAllEntriesFromTableItems();
+    public void getAllEntriesFromTableItems(String category, JSCallback callback) {
+        List<MCItem> list = MainActivity.sqliteHelper.getAllEntriesFromTableItems(category);
         callback.invoke(list);
+        list = null;
     }
 
     @WXModuleAnno
@@ -32,6 +33,7 @@ public class SqliteModule extends WXModule{
             callback.invoke("null");
         }
         callback.invoke(items);
+        items = null;
     }
 
     @WXModuleAnno
@@ -68,19 +70,23 @@ public class SqliteModule extends WXModule{
     public void getItemFormulaFromId(String id, JSCallback callback) {
         MCItemFormula formula = MainActivity.sqliteHelper.getItemFormulaFromId(id);
         callback.invoke(formula);
+        formula = null;
     }
 
     @WXModuleAnno
     public void getItemFromIdOrName(String idOrName, JSCallback callback) {
         List<MCItem> items = MainActivity.sqliteHelper.getItemFromIdOrName(idOrName);
         callback.invoke(items);
+        items = null;
     }
 
     @WXModuleAnno
     public void getBalance(JSCallback callback) {
         MCBalanceHelper mBalanceHelper = new MCBalanceHelper();
         MCBalance mcBalance = mcBalance = mBalanceHelper.calculateFromShoppingList();
+        mBalanceHelper = null;
         callback.invoke(mcBalance);
+        mcBalance = null;
     }
 
     @WXModuleAnno

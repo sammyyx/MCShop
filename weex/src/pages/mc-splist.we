@@ -73,7 +73,7 @@
                     item.id = list[i].id;
                     item.name = list[i].name;
                     item.icon = list[i].icon;
-                    item.material = list[i].material;
+                    item.category = list[i].category;
                     self.row.push(item);
                 }
             });

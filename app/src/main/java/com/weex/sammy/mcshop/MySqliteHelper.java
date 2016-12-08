@@ -81,9 +81,11 @@ public class MySqliteHelper extends SQLiteOpenHelper {
         mDatabase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.OPEN_READONLY);
     }
 
-    public List<MCItem> getAllEntriesFromTableItems() {
-        String[] projection = {"id", "name", "icon", "material"};
-        Cursor c = mDatabase.query("items", projection, null, null, null, null, null);
+    public List<MCItem> getAllEntriesFromTableItems(String category) {
+        String[] projection = {"id", "name", "icon", "category"};
+        String selection = "category=?";
+        String[] selectionArgs={category};
+        Cursor c = mDatabase.query("items", projection, selection, selectionArgs, null, null, null);
         int numberOfItems = c.getCount();
         c.moveToFirst();
         ArrayList itemList = new ArrayList();
@@ -92,10 +94,11 @@ public class MySqliteHelper extends SQLiteOpenHelper {
             item.name = c.getString(c.getColumnIndexOrThrow("name"));
             item.icon = c.getString(c.getColumnIndexOrThrow("icon"));
             item.id = c.getString(c.getColumnIndexOrThrow("id"));
-            item.material = c.getString(c.getColumnIndexOrThrow("material"));
+            item.category = c.getString(c.getColumnIndexOrThrow("category"));
             itemList.add(item);
             c.moveToNext();
         }
+        c.close();
         return itemList;
     }
 
@@ -112,7 +115,8 @@ public class MySqliteHelper extends SQLiteOpenHelper {
         item.name = c.getString(c.getColumnIndexOrThrow("name"));
         item.icon = c.getString(c.getColumnIndexOrThrow("icon"));
         item.id = c.getString(c.getColumnIndexOrThrow("id"));
-        item.material = c.getString(c.getColumnIndexOrThrow("material"));
+        item.category = c.getString(c.getColumnIndexOrThrow("category"));
+        c.close();
         return item;
     }
 
@@ -140,13 +144,14 @@ public class MySqliteHelper extends SQLiteOpenHelper {
                 formulaItem.id = item.id;
                 formulaItem.name = item.name;
                 formulaItem.icon = item.icon;
-                formulaItem.material = item.material;
+                formulaItem.category = item.category;
                 formulaItem.position = i;
                 formulaList.add(formulaItem);
             }
             formula.items = formulaList;
             formula.item = targetItem;
             formula.isRequiredFurnace = formulaArray[10];
+            c.close();
             return formula;
         }
     }
@@ -166,6 +171,7 @@ public class MySqliteHelper extends SQLiteOpenHelper {
             items.add(item);
             c.moveToNext();
         }
+        c.close();
         return items;
     }
 

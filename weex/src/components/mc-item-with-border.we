@@ -51,14 +51,15 @@
             _id: null,
             name: null,
             icon: null,
-            material: null,
+            category: null,
             number: null
         },
         created: function () {
         },
         methods: {
             clickItem: function (e) {
-                if(this.material == "no") {
+                if(this.category == null) return;
+                if(this.category != "material") {
                     var params = {
                         "url": "file://assets/weex/pages/" + "mc-composed-table-page.js" + "?id=" + this._id,
                         "animated": "true"

@@ -94,7 +94,7 @@
                                 item.id = list[i].id;
                                 item.name = list[i].name;
                                 item.icon = "file:///android_asset/items/"+list[i].icon;
-                                item.material = list[i].material;
+                                item.category = list[i].category;
                                 column.data.push(item);
                                 i++;
                                 if (i >= list.length) {

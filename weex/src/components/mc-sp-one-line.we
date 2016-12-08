@@ -6,7 +6,7 @@
                     _id="{{id}}"
                     name="{{name}}"
                     icon="{{icon}}"
-                    material="{{material}}"
+                    category="{{category}}"
             >
             </mc-item-in-sp>
         </div>

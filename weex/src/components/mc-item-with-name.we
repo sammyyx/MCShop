@@ -1,6 +1,6 @@
 <template>
     <div class="bundle" onclick="click">
-        <mc-item _id="{{_id}}" name="{{name}}" icon="{{icon}}" material="{{material}}"></mc-item>
+        <mc-item _id="{{_id}}" name="{{name}}" icon="{{icon}}" category="{{category}}"></mc-item>
         <text class="name">{{name}}</text>
     </div>
 </template>
@@ -31,7 +31,7 @@
             name: null,
             _id: null,
             icon: null,
-            material: null
+            category: null
         },
         created: function () {
         },
@@ -49,7 +49,7 @@
                         item.name = self.name;
                         item.id = self._id;
                         item.icon = self.icon;
-                        item.material = self.material;
+                        item.category = self.category;
                         sqliteModules.insertItemToShoppingList(item, function (res) {
                         });
                         self.$dispatch('additem2shoppinglist', {id: self._id});

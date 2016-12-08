@@ -10,7 +10,7 @@
                             _id="{{tr1tc1_id}}"
                             name="{{tr1tc1_name}}"
                             icon="{{tr1tc1_icon}}"
-                            material="{{tr1tc1_material}}"
+                            category="{{tr1tc1_material}}"
                     ></mc-item-with-border>
                 </div>
                 <div class="column">
@@ -18,7 +18,7 @@
                             _id="{{tr1tc2_id}}"
                             name="{{tr1tc2_name}}"
                             icon="{{tr1tc2_icon}}"
-                            material="{{tr1tc2_material}}"
+                            category="{{tr1tc2_material}}"
                     ></mc-item-with-border>
                 </div>
                 <div class="column">
@@ -26,7 +26,7 @@
                             _id="{{tr1tc3_id}}"
                             name="{{tr1tc3_name}}"
                             icon="{{tr1tc3_icon}}"
-                            material="{{tr1tc3_material}}"
+                            category="{{tr1tc3_material}}"
                     ></mc-item-with-border>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                             _id="{{tr2tc1_id}}"
                             name="{{tr2tc1_name}}"
                             icon="{{tr2tc1_icon}}"
-                            material="{{tr2tc1_material}}"
+                            category="{{tr2tc1_material}}"
                     ></mc-item-with-border>
                 </div>
                 <div class="column">
@@ -44,7 +44,7 @@
                             _id="{{tr2tc2_id}}"
                             name="{{tr2tc2_name}}"
                             icon="{{tr2tc2_icon}}"
-                            material="{{tr2tc2_material}}"
+                            category="{{tr2tc2_material}}"
                     ></mc-item-with-border>
                 </div>
                 <div class="column">
@@ -52,7 +52,7 @@
                             _id="{{tr2tc3_id}}"
                             name="{{tr2tc3_name}}"
                             icon="{{tr2tc3_icon}}"
-                            material="{{tr2tc3_material}}"
+                            category="{{tr2tc3_material}}"
                     ></mc-item-with-border>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                             _id="{{tr3tc1_id}}"
                             name="{{tr3tc1_name}}"
                             icon="{{tr3tc1_icon}}"
-                            material="{{tr3tc1_material}}"
+                            category="{{tr3tc1_material}}"
                     ></mc-item-with-border>
                 </div>
                 <div class="column">
@@ -70,7 +70,7 @@
                             _id="{{tr3tc2_id}}"
                             name="{{tr3tc2_name}}"
                             icon="{{tr3tc2_icon}}"
-                            material="{{tr3tc2_material}}"
+                            category="{{tr3tc2_material}}"
                     ></mc-item-with-border>
                 </div>
                 <div class="column">
@@ -78,7 +78,7 @@
                             _id="{{tr3tc3_id}}"
                             name="{{tr3tc3_name}}"
                             icon="{{tr3tc3_icon}}"
-                            material="{{tr3tc3_material}}"
+                            category="{{tr3tc3_material}}"
                     ></mc-item-with-border>
                 </div>
             </div>
